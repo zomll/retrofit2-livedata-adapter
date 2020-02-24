@@ -6,7 +6,19 @@ retrofit2-livedata-adapter
 简洁，高效，通用，返回的LiveData对象可接收在发送网络请求后的各种状态（请求发送中，请求成功，请求失败)
 
 ## 使用步骤：
-### 1.添加依赖
+### 1.配置JitPack 仓库及依赖
+
+未配置JitPack 仓库的项目需要添加Jitpack仓库，在项目的build.gradle文件配置如下
+    
+    allprojects {
+           repositories {
+            ...
+                maven { url 'https://jitpack.io' }
+            }
+	}
+	
+
+添加依赖
 
     //使用此库，项目需要依赖retrofit，此库基于 retrofit 2.\*.\* 版本编写，其他版本不确定兼容性
     implementation "com.squareup.retrofit2:retrofit:2.*.*"
