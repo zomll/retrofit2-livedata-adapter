@@ -49,7 +49,7 @@ retrofit2-livedata-adapter
  
 获取的resultLiveData 对象可在Activity/Fragment 中监听状态及结果
   
-    resultLiveData.observe(activity, new Observer<LiveDataResponse<GetVideoDetailsResp>>() {
+    resultLiveData.observe(activity/fragment, new Observer<LiveDataResponse<GetVideoDetailsResp>>() {
                     @Override
                     public void onChanged(@Nullable LiveDataResponse<GetVideoDetailsResp> tLiveDataResponse) {
                         if (tLiveDataResponse != null) {
