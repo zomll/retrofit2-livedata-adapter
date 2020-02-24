@@ -6,9 +6,14 @@ retrofit2-livedata-adapter
 简洁，高效，通用，返回的LiveData对象可接收在发送网络请求后的各种状态（请求发送中，请求成功，请求失败)
 
 ## 使用步骤：
-### 1.使用此库，项目需要确定依赖了retrofit，此库基于 retrofit 2.\*.\* 版本编写，其他版本不确定兼容性
+### 1.添加依赖
 
+    //使用此库，项目需要依赖retrofit，此库基于 retrofit 2.\*.\* 版本编写，其他版本不确定兼容性
     implementation "com.squareup.retrofit2:retrofit:2.*.*"
+    
+    //添加本库的依赖
+     implementation 'com.github.zomll:retrofit2-livedata-adapter:1.0'
+    
     
 ### 2.配置Retrofit,添加LiveData2CallAdapterFactory
 
@@ -52,7 +57,9 @@ retrofit2-livedata-adapter
                             switch (status) {
                                 case ERROR:
                                     //失败
-                                    
+                                    //获取失败信息
+                                    Throwable throwable = tLiveDataResponse.getThrowable();
+                                     
                                     break;
                                 case LOADING:
                                     //加载中
