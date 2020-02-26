@@ -3,7 +3,7 @@ retrofit2-livedata-adapter
 ## 作用：
 支持将使用retrofit定义的 service 接口 返回数据转换为LiveData
 ## 特点：
-简洁，高效，通用，返回的LiveData对象可接收在发送网络请求后的各种状态（请求发送中，请求成功，请求失败)
+简洁，高效，通用
 
 ## 使用步骤：
 ### 1.配置JitPack 仓库及依赖
@@ -36,26 +36,26 @@ retrofit2-livedata-adapter
                 .client(okhttpBuilder.build())
                 .build();
                 
-### 3.定义 service 接口,使用 ResultLiveData 接收结果
+### 3.定义 service 接口,使用 ApiRespLiveData 接收结果
 
     public interface ApiService {
     
         
         @GET("api/detail")
          //使用ResultLiveData<Json实体类>则返回的结果为解析后的Json实体对象
-         ResultLiveData<GetVideoDetailsResp> getVideoDetails(@Query("id") String id);
+         ApiRespLiveData<GetVideoDetailsResp> getVideoDetails(@Query("id") String id);
      
         @GET("api/detail")
          //使用ResultLiveData<Response<Json实体类>>则返回的结果为Response(retrofit的HTTP response)包含解析后的Json实体对象
-        ResultLiveData<Response<GetVideoDetailsResp>> getVideoDetailsResponse(@Query("id") String id);
+        ApiRespLiveData<Response<GetVideoDetailsResp>> getVideoDetailsResponse(@Query("id") String id);
     }
-  这里返回使用 ResultLiveData,它是LiveData 的子类
+  这里返回使用 ApiRespLiveData,它是LiveData 的子类
   
   GetVideoDetailsResp 为自定义的Json解析结果实体类
   
 ### 4.调用
 
-    ResultLiveData<GetVideoDetailsResp>  resultLiveData=retrofit
+    ApiRespLiveData<GetVideoDetailsResp>  resultLiveData=retrofit
                                                             .create(ApiService.class)
                                                             .getVideoDetails(videoId);
  
@@ -73,10 +73,7 @@ retrofit2-livedata-adapter
                                     Throwable throwable = tLiveDataResponse.getThrowable();
                                      
                                     break;
-                                case LOADING:
-                                    //加载中
-                                    
-                                    break;
+                         
                                 case SUCCESS:
                                     //成功
                                     GetVideoDetailsResp data = tLiveDataResponse.getData();
