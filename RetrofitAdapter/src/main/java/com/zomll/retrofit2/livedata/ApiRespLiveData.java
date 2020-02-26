@@ -14,10 +14,6 @@ public class ApiRespLiveData<T> extends MutableLiveData<ApiResponse<T>> {
     public ApiRespLiveData() {
     }
 
-    protected void onLoading(){
-        postValue(new ApiResponse(ApiResponse.Status.LOADING,null));
-    }
-
     protected void onSuccess(@NonNull T t){
         postValue(new ApiResponse<T>(ApiResponse.Status.SUCCESS,t));
     }

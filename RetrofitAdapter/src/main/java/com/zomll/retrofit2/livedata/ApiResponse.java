@@ -17,11 +17,6 @@ public class ApiResponse<T> {
          * 失败
          */
         ERROR,
-
-        /**
-         * 加载中
-         */
-        LOADING
     }
 
     private T data;
