@@ -23,7 +23,7 @@ public class LiveData2CallAdapterFactory extends CallAdapter.Factory{
     @Override
     public CallAdapter<?, ?> get(Type returnType, Annotation[] annotations, Retrofit retrofit) {
         Class<?> rawType = getRawType(returnType);
-        boolean isResultLiveData = rawType == ResultLiveData.class;
+        boolean isResultLiveData = rawType == ApiRespLiveData.class;
         if (!isResultLiveData) {
             return null;
         }

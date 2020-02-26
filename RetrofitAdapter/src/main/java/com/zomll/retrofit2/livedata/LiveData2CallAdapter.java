@@ -1,9 +1,7 @@
 package com.zomll.retrofit2.livedata;
 
 import android.support.annotation.NonNull;
-
 import java.lang.reflect.Type;
-
 import retrofit2.Call;
 import retrofit2.CallAdapter;
 
@@ -32,7 +30,7 @@ public class LiveData2CallAdapter<R> implements CallAdapter<R,Object> {
     @Override
     public Object adapt(@NonNull Call<R> call) {
 
-        return isBody ? new BodyAdapt<R>(call.clone()) : new ResponseAdpt<R>(call.clone());
+        return isBody ? new BodyAdapt<R>(call) : new ResponseAdpt<R>(call);
     }
 
 

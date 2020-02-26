@@ -14,12 +14,12 @@ import retrofit2.Response;
  * @describe
  * @email zzh5659@qq.com
  */
-final class ResponseAdpt<R> extends ResultLiveData<Response<R>> {
+final class ResponseAdpt<R> extends ApiRespLiveData<Response<R>> {
     private Call<R> call;
     private final AtomicBoolean flag;
 
     public ResponseAdpt(Call<R> call) {
-        this.call = call;
+        this.call = call.clone();
         flag = new AtomicBoolean(false);
     }
 
@@ -35,7 +35,7 @@ final class ResponseAdpt<R> extends ResultLiveData<Response<R>> {
 
         if(flag.compareAndSet(false,true)){
             onLoading();
-            call.clone().enqueue(new Callback<R>() {
+            call.enqueue(new Callback<R>() {
                 @Override
                 public void onResponse(@NonNull Call<R> call, @NonNull Response<R> response) {
                     onSuccess(response);

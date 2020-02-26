@@ -1,14 +1,12 @@
 package com.zomll.retrofit2.livedata;
 
-import android.support.annotation.NonNull;
-
 /**
  * @author Zomll
  * @date 2020-02-24 04:21
  * @describe
  * @email zzh5659@qq.com
  */
-public class LiveDataResponse<T> {
+public class ApiResponse<T> {
     public enum Status{
         /**
          * 成功
@@ -27,15 +25,15 @@ public class LiveDataResponse<T> {
     }
 
     private T data;
-    private LiveDataResponse.Status status;
+    private ApiResponse.Status status;
     private Throwable throwable;
 
-    public LiveDataResponse(Status status,T data) {
+    public ApiResponse(Status status, T data) {
         this.data = data;
         this.status = status;
     }
 
-    public LiveDataResponse(Status status, Throwable throwable) {
+    public ApiResponse(Status status, Throwable throwable) {
         this.status = status;
         this.throwable = throwable;
     }
@@ -44,7 +42,7 @@ public class LiveDataResponse<T> {
         return data;
     }
 
-    public LiveDataResponse.Status getStatus() {
+    public ApiResponse.Status getStatus() {
         return status;
     }
 

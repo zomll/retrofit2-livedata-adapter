@@ -9,21 +9,21 @@ import android.support.annotation.NonNull;
  * @describe
  * @email zzh5659@qq.com
  */
-public class ResultLiveData<T> extends MutableLiveData<LiveDataResponse<T>> {
+public class ApiRespLiveData<T> extends MutableLiveData<ApiResponse<T>> {
 
-    public ResultLiveData() {
+    public ApiRespLiveData() {
     }
 
     protected void onLoading(){
-        postValue(new LiveDataResponse(LiveDataResponse.Status.LOADING,null));
+        postValue(new ApiResponse(ApiResponse.Status.LOADING,null));
     }
 
     protected void onSuccess(@NonNull T t){
-        postValue(new LiveDataResponse<T>(LiveDataResponse.Status.SUCCESS,t));
+        postValue(new ApiResponse<T>(ApiResponse.Status.SUCCESS,t));
     }
 
     protected void onError(Throwable throwable){
-        postValue(new LiveDataResponse(LiveDataResponse.Status.ERROR,throwable));
+        postValue(new ApiResponse(ApiResponse.Status.ERROR,throwable));
     }
 
 }

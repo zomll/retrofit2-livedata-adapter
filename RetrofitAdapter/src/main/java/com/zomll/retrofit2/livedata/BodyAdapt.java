@@ -16,12 +16,12 @@ import retrofit2.Response;
  * @describe
  * @email zzh5659@qq.com
  */
-final class BodyAdapt<R> extends ResultLiveData<R>{
+final class BodyAdapt<R> extends ApiRespLiveData<R> {
     private Call<R> call;
     private final AtomicBoolean flag;
 
     public BodyAdapt(Call<R> call) {
-        this.call = call;
+        this.call = call.clone();
         flag = new AtomicBoolean(false);
     }
 
@@ -34,11 +34,10 @@ final class BodyAdapt<R> extends ResultLiveData<R>{
     @Override
     protected void onActive() {
         super.onActive();
-        call.clone();
 
         if(flag.compareAndSet(false,true)){
             onLoading();
-            call.clone().enqueue(new Callback<R>() {
+            call.enqueue(new Callback<R>() {
                 @Override
                 public void onResponse(@NonNull Call<R> call, @NonNull Response<R> response) {
                     if (response.isSuccessful()) {
