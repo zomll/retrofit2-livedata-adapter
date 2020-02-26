@@ -20,11 +20,11 @@ retrofit2-livedata-adapter
 
 添加依赖
 
-    //使用此库，项目需要依赖retrofit，此库基于 retrofit 2.\*.\* 版本编写，其他版本不确定兼容性
+    //使用此库，项目需要依赖retrofit，此库基于 retrofit 2.*.* 版本编写，其他版本不确定兼容性
     implementation "com.squareup.retrofit2:retrofit:2.*.*"
     
     //添加本库的依赖
-     implementation 'com.github.zomll:retrofit2-livedata-adapter:1.0'
+     implementation 'com.github.zomll:retrofit2-livedata-adapter:1.0.1'
     
     
 ### 2.配置Retrofit,添加LiveData2CallAdapterFactory
