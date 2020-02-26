@@ -34,7 +34,6 @@ final class ResponseAdpt<R> extends ApiRespLiveData<Response<R>> {
         super.onActive();
 
         if(flag.compareAndSet(false,true)){
-            onLoading();
             call.enqueue(new Callback<R>() {
                 @Override
                 public void onResponse(@NonNull Call<R> call, @NonNull Response<R> response) {

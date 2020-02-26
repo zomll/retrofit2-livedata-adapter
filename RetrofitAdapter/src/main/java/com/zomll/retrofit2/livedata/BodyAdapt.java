@@ -36,7 +36,6 @@ final class BodyAdapt<R> extends ApiRespLiveData<R> {
         super.onActive();
 
         if(flag.compareAndSet(false,true)){
-            onLoading();
             call.enqueue(new Callback<R>() {
                 @Override
                 public void onResponse(@NonNull Call<R> call, @NonNull Response<R> response) {
