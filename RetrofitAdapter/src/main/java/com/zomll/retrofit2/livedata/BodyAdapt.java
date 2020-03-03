@@ -36,11 +36,18 @@ final class BodyAdapt<R> extends ApiRespLiveData<R> {
         super.onActive();
 
         if(flag.compareAndSet(false,true)){
+            onLoading(null);
             call.enqueue(new Callback<R>() {
                 @Override
                 public void onResponse(@NonNull Call<R> call, @NonNull Response<R> response) {
                     if (response.isSuccessful()) {
-                        onSuccess(response.body());
+                        R body = response.body();
+                        if (body!=null) {
+                            onSuccess(body);
+                        }else {
+                            onError(new NullPointerException("data is null"));
+                        }
+
                     }else {
                         onError(new HttpException(response));
                     }
